@@ -1,0 +1,48 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+/// @title CareReceipt – Soul-bound “I felt your care” NFT
+/// @notice Lets a receiver immortalise that they accepted someone’s care
+/// @dev Works independently, but pairs nicely with CareToken.sol
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract CareReceipt is ERC721 {
+    /------------------------------------------------------------/
+    uint256 private _tokenIds;
+
+    struct Receipt {
+        address originalSender;   // who showed care
+        string  message;          // the receiver’s acknowledgement
+    }
+
+    mapping(uint256 => Receipt)            public receipts;     // tokenId ➜ details
+    mapping(address => uint256[])          public userReceipts; // receiver ➜ their receipt IDs
+    /------------------------------------------------------------/
+    constructor() ERC721("Care Receipt", "CARE-R") {}
+    /------------------------------------------------------------/
+    /// @notice Mint a soul-bound “receipt” thanking originalSender
+    function acknowledgeCare(address originalSender, string calldata message) external {
+        require(bytes(message).length > 0, "Message required");
+        _tokenIds += 1;
+        uint256 newId = _tokenIds;
+
+        _safeMint(msg.sender, newId);           // mint to receiver
+        receipts[newId] = Receipt(originalSender, message);
+        userReceipts[msg.sender].push(newId);
+    }
+    /------------------------------------------------------------/
+    function getMyReceipts() external view returns (Receipt[] memory list) {
+        uint256[] storage ids = userReceipts[msg.sender];
+        list = new Receipt[](ids.length);
+        for (uint256 i; i < ids.length; ++i) list[i] = receipts[ids[i]];
+    }
+    /* Soul-bound: block transfers except mint/burn */
+    function _beforeTokenTransfer(
+        address from, address to, uint256 id, uint256 batch
+    ) internal override {
+        if (from != address(0) && to != address(0)) revert("Soul-bound");
+        super._beforeTokenTransfer(from, to, id, batch);
+    }
+    /* optional burn (same pattern as CareToken)… */
+}
