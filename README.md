@@ -6,7 +6,7 @@
 
 ## 🌐 Live Demo
 
-🚀 **Hosted Link**: [VISIT](https://051012fa-70ae-4e5a-a138-64e8ef22cef6-00-hjhbmmk8mz5f.picard.repl.co/)  
+🚀 **Hosted Link**: [VISIT](https://051012fa-70ae-4e5a-a138-64e8ef22cef6-00-hjhbmmk8mz5f.picard.repl.co:5000/)  
 
 🎥 **Video Demo**: [Watch Demo on YouTube](https://www.youtube.com/watch?v=erAYn5LiqR4)
 
