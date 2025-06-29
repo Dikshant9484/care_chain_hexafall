@@ -10,6 +10,29 @@
 
 🎥 **Video Demo**: [Watch Demo on YouTube](https://www.youtube.com/watch?v=erAYn5LiqR4)
 
+---
+
+## 📌 Application Phases
+
+CareToken can be applied in multiple impactful scenarios:
+
+### 1️⃣ **Healthcare Aid & Relief**
+
+- Issue SBTs to patients receiving long-term healthcare benefits
+- Serve as digital proof for eligibility, past treatments, or verified conditions
+- Prevent fraud in welfare distribution or NGO programs
+
+### 2️⃣ **Educational Certification**
+
+- Students earn non-transferable credentials like degrees or training certificates as SBTs
+- Enhances credibility and prevents falsification of academic records
+- Institutions can issue and verify on-chain without intermediaries
+
+### 3️⃣ **Disaster Management Identity Verification**
+
+- Victims of natural disasters can register on decentralized identity layer
+- Aid providers issue temporary SBTs for food, shelter, or compensation
+- Ensures transparency and faster response without traditional ID documents
 
 ---
 
